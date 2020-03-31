@@ -1,0 +1,32 @@
+@import "../common/color.scss";
+
+main {
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .mainpage-img {
+    width: 450px;
+    height: 450px;
+    background-image: url("../../../public/images/jpg/todo.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  button {
+    margin-top: 60px;
+    padding: 15px;
+    width: 300px;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    outline: none;
+    background: #{$oldPink};
+    color: #ffffff;
+    border-radius: 5px;
+  }
+  button:hover {
+    background: none;
+    color: #{$oldPink}
+  }
+}
