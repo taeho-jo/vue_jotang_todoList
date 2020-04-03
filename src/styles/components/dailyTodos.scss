@@ -1,0 +1,129 @@
+@import "../common/color.scss";
+
+.daily-container {
+  width: 100%;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  .daily-add {
+    width: 150px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    background: #{$oldPink};
+    color: #ffffff;
+    font-size: 18px;
+    outline: none;
+    cursor: pointer;
+  }
+  .daily-add:hover {
+    color: #{$oldPink};
+    background: #ffffff;
+  }
+  .daily-list {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    margin-top: 50px;
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      input {
+        justify-items: flex-start;
+        cursor: pointer;
+      }
+      .done {
+        text-decoration: line-through;
+        list-style: none;
+        margin-left: 25px;
+        padding: 10px;
+      }
+      .notyet {
+        padding: 10px;
+        list-style: none;
+        margin-left: 25px;
+      }
+      img {
+        position: absolute;
+        right: 15px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.daily-modal-overlay {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.16);
+  opacity: 0.7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-container {
+  background: #ffffff;
+  position: fixed;
+  width: 400px;
+  height: 600px;
+  z-index: 5;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  h1 {
+    margin-top: 20px;
+  }
+  .add {
+    margin-top: 20px;
+  }
+  input {
+    width: 300px;
+    padding: 8px 10px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid gray;
+    margin-bottom: 10px;
+  }
+  input:focus {
+    border-bottom: 2px solid #{$oldPink};
+  }
+  textarea {
+    margin-top: 10px;
+    width: 300px;
+    padding: 8px 10px;
+    font-size: 16px;
+    outline: none;
+    border: 2px solid gray;
+    resize: none;
+  }
+  textarea:focus {
+    border: 2px solid #{$oldPink};
+  }
+  .todo-add {
+    width: 150px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    outline: none;
+    cursor: pointer;
+    color: #{$oldPink};
+    background: #ffffff;
+    margin-top: 20px;
+  }
+  .todo-add:hover {
+    background: #{$oldPink};
+    color: #ffffff;
+  }
+}

@@ -1,12 +1,13 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     isLogined: false,
-    userNickName: ""
+    userNickName: '',
+    access_token: null,
   },
   mutations: {
     isLogin(state, payload) {
@@ -14,8 +15,11 @@ export default new Vuex.Store({
     },
     getNickName(state, payload) {
       state.userNickName = payload;
-    }
+    },
+    getAccessToken(state, payload) {
+      state.access_token = payload;
+    },
   },
   actions: {},
-  modules: {}
+  modules: {},
 });

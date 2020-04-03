@@ -1,19 +1,15 @@
 <template>
-  <div>
-    <Nav></Nav>
-    <MainPage></MainPage>
-  </div>
+  <MainPage></MainPage>
 </template>
 
 <script>
 // @ is an alias to /src
-import { MainPage, Nav } from "@/components";
+import { MainPage } from '@/components';
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     MainPage,
-    Nav
-  }
+  },
 };
 </script>

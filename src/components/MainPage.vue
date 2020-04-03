@@ -9,9 +9,12 @@
 export default {
   methods: {
     movePage() {
-      this.$router.push("/login");
-    }
-  }
+      this.$router.push('/login');
+    },
+    check() {
+      console.log(this.$store.state.access_token);
+    },
+  },
 };
 </script>
 
