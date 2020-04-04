@@ -8,6 +8,7 @@ export default new Vuex.Store({
     isLogined: false,
     userNickName: '',
     access_token: null,
+    detailData: [],
   },
   mutations: {
     isLogin(state, payload) {
@@ -19,7 +20,23 @@ export default new Vuex.Store({
     getAccessToken(state, payload) {
       state.access_token = payload;
     },
+    getDetailData(state, payload) {
+      state.detailData = payload;
+    },
   },
-  actions: {},
+  actions: {
+    get({ commit }, payload) {
+      fetch(`http://localhost:4004/api/todos/${payload}`)
+        .then(res => {
+          return res.json();
+        })
+        .then(res => {
+          commit('getDetailData', res);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+  },
   modules: {},
 });

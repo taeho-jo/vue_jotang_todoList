@@ -46,10 +46,28 @@
         list-style: none;
         margin-left: 25px;
       }
-      img {
+      div {
         position: absolute;
         right: 15px;
+        display: flex;
+        align-items: center;
+        button {
+          margin-right: 10px;
+          font-size: 14px;
+          background: #fff;
+          color: gray;
+          border: none;
+          outline: none;
+          border-radius: 5px;
+          padding: 2px;
+        }
+        button:hover {
+          background: #{$oldPink};
+          color: #fff;
+        }
+      img {
         cursor: pointer;
+      }
       }
     }
   }
@@ -61,7 +79,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0,0,0,0.16);
+  background-color: gray;
   opacity: 0.7;
   display: flex;
   justify-content: center;
@@ -71,7 +89,8 @@
   background: #ffffff;
   position: fixed;
   width: 400px;
-  height: 600px;
+  height: auto;
+  padding-bottom: 15px;
   z-index: 5;
   left: 50%;
   top: 50%;
@@ -85,6 +104,32 @@
   }
   .add {
     margin-top: 20px;
+    .tag-box {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      input {
+        width: 240px;
+        margin-right: 10px;
+      }
+      button {
+        width: 50px;
+        font-size: 14px;
+        background: #fff;
+        color: #{$oldPink};
+        border: none;
+        outline: none;
+        border-radius: 5px;
+      }
+      button:hover {
+        background: #{$oldPink};
+        color: #fff;
+      }
+    }
+    .hash-tags {
+      margin-left: 8px;
+    }
   }
   input {
     width: 300px;

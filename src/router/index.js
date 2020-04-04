@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import { Home, Daily, Login, Monthly, Weekly, Signup } from "@/views";
+import { Home, Daily, Login, Monthly, DetailList, Signup } from "@/views";
 
 Vue.use(VueRouter);
 
@@ -18,14 +18,14 @@ export default new VueRouter({
       component: Daily
     },
     {
+      path: "/detail/:id",
+      name: "detail",
+      component: DetailList,
+    },
+    {
       path: "/monthly",
       name: "monthly",
       component: Monthly
-    },
-    {
-      path: "/weekly",
-      name: "weekly",
-      component: Weekly
     },
     {
       path: "/login",

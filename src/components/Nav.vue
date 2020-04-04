@@ -6,9 +6,7 @@
       </router-link>
     </div>
     <div class="nav-category">
-      <router-link to="/daily">Daily</router-link>
-      <router-link to="/weekly">Weekly</router-link>
-      <router-link to="/monthly">Monthly</router-link>
+      <router-link to="/daily">List</router-link>
       <router-link v-if="this.$store.state.access_token === null" to="/login">Login</router-link>
       <button v-else @click="isLogout">Logout</button>
     </div>
