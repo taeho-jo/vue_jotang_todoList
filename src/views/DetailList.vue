@@ -1,27 +1,13 @@
 <template>
-  <div>
-    <div>
-      <p>{{ a.title }}</p>
-      <p>{{ a.desc }}</p>
-    </div>
-  </div>
+  <DailyDetail></DailyDetail>
 </template>
 
 <script>
+import DailyDetail from '../components/DailyDetail';
+
 export default {
-  data() {
-    return {
-      url: null,
-    };
-  },
-  computed: {
-    a() {
-      return this.$store.state.detailData;
-    },
-  },
-  mounted() {
-    this.url = this.$route.params.id;
-    this.$store.dispatch('get', this.url);
+  components: {
+    DailyDetail,
   },
 };
 </script>
