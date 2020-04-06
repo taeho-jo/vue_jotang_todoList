@@ -54,12 +54,12 @@
         button {
           margin-right: 10px;
           font-size: 14px;
-          background: #fff;
+          background: none;
           color: gray;
           border: none;
           outline: none;
           border-radius: 5px;
-          padding: 2px;
+          padding: 4px;
         }
         button:hover {
           background: #{$oldPink};
@@ -130,6 +130,11 @@
     .hash-tags {
       margin-left: 8px;
     }
+  }
+  .select-date, .expried-date {
+    width: 100%;
+    margin-top: 20px;
+    max-width: 300px;
   }
   input {
     width: 300px;

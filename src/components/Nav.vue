@@ -1,14 +1,17 @@
 <template>
   <header>
     <div class="nav-title">
-      <router-link class="home-title" to="/">
+      <h1 class="home-title" @click="moveHome">
         Jotang's Todo
-      </router-link>
+      </h1>
     </div>
     <div class="nav-category">
-      <router-link to="/daily">List</router-link>
-      <router-link v-if="this.$store.state.access_token === null" to="/login">Login</router-link>
-      <button v-else @click="isLogout">Logout</button>
+      <p v-if="this.$store.state.access_token === null" @click="moveLogin"
+        >로그인을 해주세요</p
+      >
+      <button v-if="this.$store.state.access_token !== null" @click="isLogout">
+        {{ this.$store.state.username }}님 반갑습니다
+      </button>
     </div>
   </header>
 </template>
@@ -17,10 +20,35 @@
 export default {
   methods: {
     isLogout() {
-      console.log(this.$store.state.isLogined);
+      fetch('http://localhost:4004/api/auth/logout', {
+        method: 'POST',
+      })
+        .then(res => {
+          console.log(res);
+          this.moveHome();
+        })
+        .catch(e => {
+          console.log(e);
+        });
       this.$store.state.access_token = null;
-      localStorage.clear();
+      this.$store.state.username = null;
+      sessionStorage.clear();
     },
+    moveHome() {
+      this.$router.push('/');
+    },
+    moveLogin() {
+      this.$router.push('/login')
+    }
+  },
+  created() {
+    const access_token = sessionStorage.getItem('access_token');
+    const username = sessionStorage.getItem('username');
+    const info = {
+      access: access_token,
+      name: username,
+    };
+    this.$store.dispatch('getUser', info);
   },
 };
 </script>

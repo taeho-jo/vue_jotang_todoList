@@ -32,6 +32,14 @@
         </div>
         <span class="hash-tags" v-for="(ii, index) in tags" :key="index">{{ `# ${ii} ` }}</span>
       </div>
+      <div class="select-date">
+        <p>Start Date</p>
+        <md-datepicker v-model="startDate" md-immediately />
+      </div>
+      <div class="expried-date">
+        <p>Expired Date</p>
+        <md-datepicker v-model="expiredDate" md-immediately />
+      </div>
       <button class="todo-add" @click="createTodo">확 인</button>
     </div>
   </div>
@@ -43,10 +51,13 @@ export default {
     return {
       todos: [],
       addTodo: false,
+      username: '',
       title: '',
       desc: '',
       tags: [],
       tag: '',
+      startDate: Date(),
+      expiredDate: Date(),
     };
   },
   methods: {
@@ -114,9 +125,12 @@ export default {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
+            username: this.username,
             title: this.title,
             desc: this.desc,
             tags: this.tags,
+            createAt: this.startDate,
+            expired: this.expiredDate,
           }),
         })
           .then(() => {
@@ -131,10 +145,8 @@ export default {
       }
     },
   },
-  clearInfo() {
-    this.title = '';
-    this.desc = '';
-    this.tags = [];
+  mounted() {
+    this.username = this.$store.state.username;
   },
   created() {
     fetch('http://localhost:4004/api/todos')

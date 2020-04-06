@@ -6,9 +6,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     isLogined: false,
-    userNickName: '',
+    username: null,
     access_token: null,
     detailData: [],
+    currentDate: null,
+    expiredDate: null,
   },
   mutations: {
     isLogin(state, payload) {
@@ -23,6 +25,16 @@ export default new Vuex.Store({
     getDetailData(state, payload) {
       state.detailData = payload;
     },
+    getUserInfo(state, payload) {
+      state.username = payload.name;
+      state.access_token = payload.access;
+    },
+    getCurrentDate(state) {
+      state.currentDate = state.detailData.createAt.slice(0, 10);
+    },
+    getExpiredDate(state) {
+      state.expiredDate = state.detailData.expired.slice(0, 10);
+    },
   },
   actions: {
     get({ commit }, payload) {
@@ -32,10 +44,15 @@ export default new Vuex.Store({
         })
         .then(res => {
           commit('getDetailData', res);
+          commit('getCurrentDate');
+          commit('getExpiredDate');
         })
         .catch(e => {
           console.log(e);
         });
+    },
+    getUser({ commit }, payload) {
+      commit('getUserInfo', payload);
     },
   },
   modules: {},

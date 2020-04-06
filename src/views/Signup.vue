@@ -3,13 +3,13 @@
     <div class="login-container">
       <div class="login-box">
         <h1>Jotang's Todo</h1>
-        <input type="text" v-model="userInfo.id" placeholder="아이디를 입력하세요" />
-        <input
-          type="password"
-          v-model="userInfo.password"
-          placeholder="비밀번호를 입력하세요"
-        /><input type="text" v-model="userInfo.nickName" placeholder="닉네임을 입력하세" />
-        <button @click="setNickName(userInfo.nickName)">
+        <input type="text" v-model="id" placeholder="아이디를 입력하세요" />
+        <input type="password" v-model="password" placeholder="비밀번호를 입력하세요" /><input
+          type="text"
+          v-model="nickName"
+          placeholder="닉네임을 입력하세"
+        />
+        <button @click="setNickName(nickName)">
           회원가입
         </button>
       </div>
@@ -18,29 +18,32 @@
 </template>
 
 <script>
-import firebase from '../firebase';
-
 export default {
   data() {
     return {
-      userInfo: {
-        id: '',
-        password: '',
-        nickName: '',
-      },
+      id: '',
+      password: '',
+      nickName: '',
     };
   },
   methods: {
     signupEmail() {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.userInfo.id, this.userInfo.password)
-        .then(res => {
-          console.log(res);
-        });
+      fetch('http://localhost:4004/api/auth/register/local', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: this.nickName,
+          email: this.id,
+          password: this.password,
+        }),
+      }).catch(e => {
+        console.log(e);
+      });
     },
-    setNickName() {
-      this.$store.commit('getNickName');
+    setNickName(username) {
+      this.$store.commit('getNickName', username);
       this.signupEmail();
       this.goLogin();
     },

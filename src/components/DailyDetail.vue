@@ -12,18 +12,18 @@
       </div>
       <div>
         <p class="detail-tags">CreateAt</p>
-        <span>{{ currentDate }}</span>
+        <span>{{ this.$store.state.currentDate }}</span>
       </div>
       <div>
         <p class="detail-tags">Expired</p>
-        <span>{{ expriedDate }}</span>
+        <span>{{ this.$store.state.expiredDate }}</span>
       </div>
       <div>
         <p class="detail-done">Done</p>
         <span>{{ DetailList.done ? '했어요!!' : '아직도 안하고 뭐햐냐???' }}</span>
       </div>
       <div class="btn-box">
-        <button @click="isDone">{{DetailList.done ? '취소!' : '완료!'}}</button>
+        <button @click="isDone">{{ DetailList.done ? '취소!' : '완료!' }}</button>
         <button @click="moveHome">목록으로!</button>
       </div>
     </div>
@@ -61,10 +61,10 @@ export default {
       return this.$store.state.detailData;
     },
     currentDate() {
-      return this.$store.state.detailData.createAt.slice(0, 10);
+      return this.DetailList.createAt;
     },
-    expriedDate() {
-      return this.$store.state.detailData.createAt.slice(0, 10);
+    expiredDate() {
+      return this.DetailList.expired;
     },
   },
   mounted() {
