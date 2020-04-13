@@ -118,6 +118,8 @@ export default {
         });
     },
     createTodo() {
+      console.log(this.startDate);
+      console.log(this.expiredDate);
       if (this.title.length > 0 && this.desc.length > 0 && this.tags.length > 0) {
         fetch('http://localhost:4004/api/todos', {
           method: 'POST',
